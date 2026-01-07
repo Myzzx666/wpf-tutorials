@@ -33,6 +33,7 @@
             FontWeight="Bold"
             Foreground="White" />
 
+        <!--模拟接口|DB|文件资源访问异常|业务异常的报错信息提示-->
         <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" Text="{Binding StatusMessage}">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -41,6 +42,15 @@
                         <DataTrigger Binding="{Binding HasStatusMessage}" Value="True">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
+                        <!--使用多条件触发器-->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsError}" Value="True"/>
+                                <Condition Binding="{Binding HasStatusMessage}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <!--设置TextBlock文本块前景颜色-->
+                            <Setter Property="Foreground" Value="DeepSkyBlue"/>
+                        </MultiDataTrigger>
                     </Style.Triggers>
                 </Style>
             </TextBlock.Style>

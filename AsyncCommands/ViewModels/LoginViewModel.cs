@@ -25,6 +25,18 @@ namespace AsyncCommands.ViewModels
             }
         }
 
+        //登录服务是否异常 Flag标识
+        private bool _isError = false;
+        public bool IsError
+        {
+            get => _isError;
+            set
+            {
+                _isError = value; //Setting true of false
+                OnPropertyChanged(nameof(IsError));
+            }
+        }
+
         //模拟IsLoading登录
         private string _statusMessage;
         public string StatusMessage
@@ -55,10 +67,29 @@ namespace AsyncCommands.ViewModels
         {
             StatusMessage = "Logging in...";
 
-            await Task.Delay(3000);
-            await new AuthenticationService().Login(Username);
+            //await Task.Delay(3000);
+            //await new AuthenticationService().Login(Username);
+            try
+            {
+                IsError = false;
+                await new AuthenticationService().Login(Username);
+            }
+            catch (Exception ex)
+            {
+                IsError = true;
+                StatusMessage = ex.Message;
 
-            StatusMessage = "Successfully logged in.";
+            }
+            finally
+            {
+                // todo
+            }
+
+            //StatusMessage = "Successfully logged in.";
+            if (!IsError)
+            {
+                StatusMessage = "Successfully logged in.";
+            }
         }
     }
 }
