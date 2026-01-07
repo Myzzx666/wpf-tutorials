@@ -18,6 +18,8 @@ namespace AsyncCommands
         {
             MainWindow = new MainWindow()
             {
+                //WPF初始化 依赖注入DataBinding
+                //MainWindow绑定的是LoginViewModel类实例
                 DataContext = new LoginViewModel()
             };
 

@@ -25,6 +25,7 @@ namespace AsyncCommands.ViewModels
             }
         }
 
+        //模拟IsLoading登录
         private string _statusMessage;
         public string StatusMessage
         {
@@ -54,6 +55,7 @@ namespace AsyncCommands.ViewModels
         {
             StatusMessage = "Logging in...";
 
+            await Task.Delay(3000);
             await new AuthenticationService().Login(Username);
 
             StatusMessage = "Successfully logged in.";

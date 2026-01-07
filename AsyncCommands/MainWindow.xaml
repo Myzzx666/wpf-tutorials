@@ -11,6 +11,7 @@
     Height="450"
     mc:Ignorable="d">
     <Grid>
+        <!--UserControl: LoginView作为MainWindow的子视图-->
         <views:LoginView />
     </Grid>
 </Window>
