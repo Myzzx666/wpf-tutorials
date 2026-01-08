@@ -49,7 +49,7 @@
                                 <Condition Binding="{Binding HasStatusMessage}" Value="True"/>
                             </MultiDataTrigger.Conditions>
                             <!--设置TextBlock文本块前景颜色-->
-                            <Setter Property="Foreground" Value="DeepSkyBlue"/>
+                            <Setter Property="Foreground" Value="Red"/>
                         </MultiDataTrigger>
                     </Style.Triggers>
                 </Style>
